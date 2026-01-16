@@ -6,16 +6,20 @@ import Forms from './Components/Forms';
 import React, { useState } from 'react';
 
 function App() {
-  const [mode, setmode] = useState("dark")
+  const [mode, setmode] = useState("light")
+
   function ChangeColor() {
     if (mode === "dark") {
-      setmode("light")
+      setmode("light");
+      document.body.style.backgroundColor = "white";
+
+    } else {
+      setmode("dark");
+      document.body.style.backgroundColor = "#2d6299";
 
     }
-    else {
-      setmode("dark")
-    }
   }
+
   return (
     <>
       <Navbar
@@ -26,11 +30,10 @@ function App() {
         searchbar={false}
         mode={mode}
         ChangeColor={ChangeColor}
-
-
       />
-      {/* <About/> */}
-      <Forms heading="Enter Your Text below" />
+
+      <Forms heading="Enter Your Text below" mode={mode} />
+
     </>
   );
 }
